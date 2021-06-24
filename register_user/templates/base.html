@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    {% endblock head %}
+</head>
+<body>
+    <header>
+        <div class="header-block">
+            <div class="logo">
+                <h2>Logbook</h2>
+            </div>
+            <div class="link">
+                <div>
+                    {% block connectivity %}
+                    Login Connectivity :
+                    <a href="{% url 'home' %}">Home</a> &nbsp; &nbsp;
+                    <a href="{% url 'reg' %}">Registration</a> &nbsp; &nbsp;
+                    <a href="{% url 'log' %}">Login</a>
+                    {% endblock connectivity %}
+                </div>
+            </div>
+        </div>
+    </header>
+    {% block content %} {% endblock content %}
+</body>
+</html>

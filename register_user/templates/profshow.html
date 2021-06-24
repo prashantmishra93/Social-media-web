@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+	<title>User Profile</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/profstyle.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="profile">
+        <h1>Welcome {{request.register.username}}</h1>
+    </div>
+
+</body>
+</html>

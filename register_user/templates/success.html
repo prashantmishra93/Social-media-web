@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    {% load static %}
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <hr/>
+
+<!-- Start Login Profile Page -->
+        {% if request.session.email %}
+        <head>
+            {% load static %}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+            <link href="{% static '/css/logstyle.css'%}" rel="stylesheet" type="text/css">
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="cCnaQCqu"></script>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="HAqYibD7"></script>
+        </head>
+        <body>
+
+    <!-- header start from here -->
+        <div class="header1">
+            <div id="logo" class="header1">
+                <h1>Logbook</h1>
+            </div>
+            <div id="searcharea" class="header1">
+                <input type="text" placeholder="search here" id="searchbox">
+            </div>
+            <div id="profilearea" class="header1">
+                <a href="{{request.session.email}}">
+                    <img src="{% static '/img/profile.png' %}" id="profilepic">
+                    <span>{{request.session.email}}</span>
+                </a>
+            </div>
+            <div id="profilearea1" class="header1">
+                <a href="{% url 'prof' %}">Profile</a>
+            </div>
+
+            <div id="profilearea2" class="header1">|</div>
+
+            <div id="homearea" class="header1">
+                <a href="{% url 'home' %}">Home</a>
+            </div>
+
+            <div id="friendarea" class="header1">
+                <a href="{% url 'photo' %}">
+                    <img src="{% static '/img/frd.png' %}" id="friendpic">
+                </a>
+            </div>
+
+            <div id="chatarea" class="header1">
+                <a href="">
+                    <img src="{% static '/img/chat.png' %}" id="chatpic">
+                </a>
+            </div>
+
+            <div id="bellarea" class="header1">
+                <a href="">
+                    <img src="{% static '/img/bell.png' %}" id="bellpic">
+                </a>
+            </div>
+
+            <div id="setarea2" class="header1">|</div>
+
+            <div id="setarea" class="header1">
+                <a href="">
+                    <img src="{% static '/img/settings.png' %}" id="setpic">
+                </a>
+            </div>
+
+            <div id="logoutarea" class="header1">
+                <a href="{% url 'logout' %}">
+                    <img src="{% static '/img/logout.png' %}" id="logpic">
+                </a>
+            </div>
+
+            <div id="resetarea" class="header1">
+                <a href="/change/{{ employee.id }}">
+                    <img src="{% static '/img/reset.png' %}" id="resetpic">
+                </a>
+            </div>
+
+        </div>    <!--- main email call here --->
+
+    <!-- header end here -->
+
+    <!-- sidebar start from here -->
+
+        <div class="bodyn">
+            <div id="side1" class="bodyn"><img src="{% static '/img/profile.png' %}" id="profpic">Profile</div>
+            <div id="side2" class="bodyn">Edit Profile</div>
+            <div id="side3" class="bodyn">
+                <a href="{% url 'prof' %}">News Feed</a>
+            </div>
+            <div id="side4" class="bodyn"><a href="{% url 'prof' %}">Messages</a></div>
+            <div id="side5" class="bodyn"><a href="{% url 'prof' %}">Events</a></div>
+            <div id="side6" class="bodyn">PAGES</div>
+            <div id="side7" class="bodyn"><a href="{% url 'prof' %}">Page Feed</a></div>
+            <div id="side8" class="bodyn"><a href="{% url 'prof' %}">Like Page</a></div>
+            <div id="side9" class="bodyn"><a href="{% url 'prof' %}">Create Page</a></div>
+            <div id="side10" class="bodyn"><a href="{% url 'prof' %}">Create ad</a></div>
+            <div id="side11" class="bodyn">GROUPS</div>
+            <div id="side12" class="bodyn"><a href="{% url 'prof' %}">New Groups</a></div>
+            <div id="side13" class="bodyn"><a href="{% url 'prof' %}">Create Group</a></div>
+            <div id="side14" class="bodyn">APPS</div>
+            <div id="side15" class="bodyn"><a href="{% url 'prof' %}">Games</a></div>
+            <div id="side16" class="bodyn"><a href="{% url 'prof' %}">On this day</a></div>
+            <div id="side17" class="bodyn"><a href="{% url 'prof' %}">Games Feed</a></div>
+            <div id="side18" class="bodyn">FRIENDS</div>
+            <div id="side19" class="bodyn"><a href="{% url 'prof' %}">Close Friend</a></div>
+            <div id="side20" class="bodyn"><a href="{% url 'prof' %}">Family</a></div>
+            <div id="side21" class="bodyn">INTERESTS</div>
+            <div id="side22" class="bodyn"><a href="{% url 'prof' %}">Page and Public</a></div>
+            <div id="side23" class="bodyn">EVENTS</div>
+            <div id="side24" class="bodyn"><a href="{% url 'prof' %}">Create Events</a></div>
+        </div>
+
+    <!-- sidebar end here -->
+
+        <!-- middle bar start from here -->
+
+        <div class="post00"></div>
+        <div class="post10"></div>
+        <div class="post20"></div>
+        <div class="post30"></div>
+        <div class="post40"></div>
+        <div class="post50"></div>
+
+        <div class="header0001"></div>
+        <div class="sidebox00"></div>
+        <div class="sidebox02"></div>
+
+        <div class="post">
+
+            <div id="column-1" class="post"></div>
+            <div class="fb-like" data-href="http://127.0.0.1:8000/prof" data-width="" id="bottonpost"
+                     data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+            <div id="postpos" class="post">
+            </div>
+            <div id="postboxpos" class="post">
+                <div class="fb-comments" data-href="http://127.0.0.1:8000/prof" data-width="" data-numposts="5" id="postbox"></div>
+            </div>
+        </div>
+
+        <div class="post2">
+            <img src="{% static '/img/profile.png' %}" id="profpic2"><br><br>    <!-- define here profile pic access -->
+            <img src="{% static '/img/my.jpg' %}" height="410" width="580" />
+            <br><br><p6>like share comment</p6><br><hr><p1>Amit Deb</p1><p2>and</p2><p1> 5 other</p1>
+            <p2> like this</p2>
+            <div id="post2text" class="post2"><p3>{{ request.session.email }}</p3>
+                <p2>with</p2><p1>Vikash Pal</p1><p2>and</p2><p1>15 other</p1><br><p4>4 hrs.</p4>
+            </div>
+            <div id="commentprof" class="post2">
+                <img src="{% static '/img/profile.png' %}" id="profpic3">
+            </div>
+            <div id="commentboxpos2" class="post2">
+                <input type="textarea" placeholder="comment" id="commentbox">
+            </div>
+
+        </div>
+
+        <div class="post3">
+            <img src="{% static '/img/profile.png' %}" id="profpic2"><br><br>    <!-- define here profile pic access -->
+            <img src="{% static '/img/Box_plot.png' %}" height="410" width="580" />
+            <br><br><p6>Like Comment Share</p6><br><hr><p1>Amit Deb</p1><p2>and</p2><p1> 5 other</p1>
+            <p2> like this</p2>
+            <div id="post2text" class="post3"><p3>{{ request.session.email }}</p3>
+                <p2>with</p2><p1>Vikash Pal</p1><p2>and</p2><p1>15 other</p1><br><p4>4 hrs.</p4>
+            </div>
+            <div id="commentprof" class="post3">
+                <img src="{% static '/img/profile.png' %}" id="profpic3">
+            </div>
+            <div id="commentboxpos2" class="post3">
+                <input type="textarea" placeholder="comment" id="commentbox">
+            </div>
+
+        </div>
+
+        <div class="post4">
+            <img src="{% static '/img/profile.png' %}" id="profpic2"><br><br>    <!-- define here profile pic access -->
+            <img src="{% static '/img/Box_plot.png' %}" height="410" width="580" />
+            <br><br><p6>Like Comment Share</p6><br><hr><p1>Amit Deb</p1><p2>and</p2><p1> 5 other</p1>
+            <p2> like this</p2>
+            <div id="post2text" class="post4"><p3>{{ request.session.email }}</p3>
+                <p2>with</p2><p1>Vikash Pal</p1><p2>and</p2><p1>15 other</p1><br><p4>4 hrs.</p4>
+            </div>
+            <div id="commentprof" class="post4">
+                <img src="{% static '/img/profile.png' %}" id="profpic3">
+            </div>
+            <div id="commentboxpos2" class="post4">
+                <input type="textarea" placeholder="comment" id="commentbox">
+            </div>
+
+        </div>
+
+        <div class="post5">
+            <img src="{% static '/img/profile.png' %}" id="profpic2"><br><br>    <!-- define here profile pic access -->
+            <img src="{% static '/img/Box_plot.png' %}" height="410" width="580" />
+            <br><br><p6>Like Comment Share</p6><br><hr><p1>Amit Deb</p1><p2>and</p2><p1> 5 other</p1>
+            <p2> like this</p2>
+            <div id="post2text" class="post5"><p3>{{ request.session.email }}</p3>
+                <p2>with</p2><p1>Vikash Pal</p1><p2>and</p2><p1>15 other</p1><br><p4>4 hrs.</p4>
+            </div>
+            <div id="commentprof" class="post5">
+                <img src="{% static '/img/profile.png' %}" id="profpic3">
+            </div>
+            <div id="commentboxpos2" class="post5">
+                <input type="textarea" placeholder="comment" id="commentbox">
+            </div>
+
+        </div>
+
+        <div class="sidebox">
+            <div id="sidebox1" class="sidebox">
+                <div id="sideboxx1">YOUR PAGES</div><hr><br><br><br>See all<hr>
+                <div id="sideboxx2">This Week</div><br><br><br>See more<hr>
+                <div id="sideboxx3">Recent Posts</div><br><br><br>See More<hr>
+                <div id="sideboxx4">You haven't in this days</div><br><br><br><br><br><br>See all
+            </div>
+            <div id="post1pos" class="sidebox">
+                <input type="submit" id="buttonpost1" value="write a post">
+            </div>
+
+
+        </div>
+
+        <div class="sideboxxx2">
+            <div id="sidebox2" class="sideboxxx2">
+                <br>
+                <hr>
+                <div id="sideboxx21">Trending</div><br><br><br>See more<hr>
+                <div id="sideboxx22">Suggested Pages</div><br><br><br>See all<hr>
+                <div id="sideboxx23">People you may know</div><br><br><br>See all
+            </div>
+        </div>
+
+    <!-- middle bar end here -->
+
+    <!--Popup Section start -->
+        <div class="popup-body">
+            <section>
+                {% csrf_token %}
+                <button data-toggle="collapse" data-target=".chat-popup" class="chat-btn">
+                    <i class="material-icons"> comment </i>
+                </button>
+
+                <div class="chat-popup">
+                    <div class="badge">1</div>
+                    <div class="chat-area">
+                     <div class="income-msg">
+                         <img src="{% static 'img/my.jpg' %}" class="avatar" alt="">
+                         <span class="msg"> Hi, How can I help you?</span>
+                     </div>
+                    </div>
+
+                    <div class="input-area">
+                        <input type="text">
+                        <button id="emoji-btn"> &#127773;</button>
+                        <button class="submit"> <i class="material-icons"> send</i></button>
+                    </div>
+                </div>
+            </section>
+            <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+            <script src="{% static '/js/main.js' %}"></script>
+        </div>
+    <!--Popup Section end -->
+
+        </body>
+
+<!-- End Login Profile Page -->
+
+<!-- Start Home Page For link of Registration and Login -->
+
+        {% else %}
+        <head>
+            {% load static %}
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Robot:300,400,500,700,900display=swap');
+                * {
+                    padding: 0px;
+                    margin: 0px;
+                    box-sizing: border-box;
+                }
+
+                body {
+                    position: absolute;
+                    width: 100%;
+                    min-height: 100%;
+                }
+
+                header {
+                    background: #415e9b;
+                    height: 25%;
+                    border-bottom: 1px solid #133783;
+                }
+
+                header .logo {
+                    color: #fff;
+                    font-size: 28px;
+                    margin-left: 12%;
+                    padding-top: 15px;
+                    position: absolute;
+                }
+
+                header .link {
+                    color: #fff;
+                    font-size: 24px;
+                    text-align: right;
+                    padding-top: 40px;
+                    padding-right: 40px;
+                    word-spacing: 5px;
+                }
+
+                .link a {
+                    text-decoration: none;
+                    color: #000;
+                }
+
+                .main {
+                    position: absolute;
+                    overflow: hidden;
+                    display: flex;
+                    width: 100%;
+                    min-height: 90vh;
+                    background: #e80202;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .container {
+                    position: absolute;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                h1 {
+                    color: #fff;
+                    text-align: center;
+                    font-size: 8vw;
+                    line-height: 1em;
+                    z-index: 1000;
+                    font-weight: 900;
+                }
+
+                h1 span {
+                    font-size: 0.3em;
+                    letter-spacing: 0.2em;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                }
+
+                .block {
+                    position: absolute;
+                    width: 50px;
+                    height: 100px;
+                    background: #e80202;
+                    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2)
+                }
+            </style>
+        </head>
+
+        <header>
+            <div class="header-block">
+                <div class="logo">
+                    <h2>Logbook</h2>
+                </div>
+                <div class="link">
+                    <div>
+                        Login Connectivity :
+                        <a href="{% url 'reg' %}">Registration</a> &nbsp; &nbsp;
+                        <a href="{% url 'log' %}">Login</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="container">
+                <h1><span>Welcome to</span><br>LogBook</h1>
+            </div>
+
+            <script src="{% static '/js/anime.min.js' %}"></script>
+            <script>
+                const container = document.querySelector('.container')
+                for (var i =0; i<=40; i++){
+                    const blocks = document.createElement('div');
+                    blocks.classList.add('block');
+                    container.appendChild(blocks);
+                }
+
+                function animateBlocks(){
+                    anime({
+                        targets: '.block',
+                        translateX: function(){
+                            return anime.random(-700, 700);
+                        },
+                        translateY: function(){
+                            return anime.random(-500, 500);
+                        },
+                        scale: function(){
+                            return anime.random(1,5);
+                        },
+
+                        easing: 'linear',
+                        duration: 1000,
+                        delay: anime.stagger(10),
+                        complete: animateBlocks,
+                    })
+                }
+
+                animateBlocks()
+            </script>
+        </div>
+        {% endif %}
+    </form>
+</body>
+</html>
